@@ -267,13 +267,6 @@ public class BarcodeScanner extends CordovaPlugin {
      * check application's permissions
      */
    public boolean hasPermisssion() {
-       for(String p : permissions)
-       {
-           if(!PermissionHelper.hasPermission(this, p))
-           {
-               return false;
-           }
-       }
        return true;
    }
 
