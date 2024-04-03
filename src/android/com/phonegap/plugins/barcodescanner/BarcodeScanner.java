@@ -60,7 +60,7 @@ public class BarcodeScanner extends CordovaPlugin {
 
     private static final String LOG_TAG = "BarcodeScanner";
 
-    private String [] permissions = {};
+    private String [] permissions = { Manifest.permission.CAMERA };
 
     private JSONArray requestArgs;
     private CallbackContext callbackContext;
@@ -267,6 +267,13 @@ public class BarcodeScanner extends CordovaPlugin {
      * check application's permissions
      */
    public boolean hasPermisssion() {
+       for(String p : permissions)
+       {
+           if(!PermissionHelper.hasPermission(this, p))
+           {
+               return false;
+           }
+       }
        return true;
    }
 
